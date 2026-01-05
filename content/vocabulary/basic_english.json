@@ -1,0 +1,51 @@
+{
+  "title": "基礎英単語",
+  "level": "beginner",
+  "words": [
+    {
+      "word": "abundant",
+      "pronunciation": "/əˈbʌndənt/",
+      "partOfSpeech": "adjective",
+      "definition": "existing or available in large quantities; plentiful",
+      "definitionJa": "豊富な、たくさんある",
+      "example": "The region has abundant natural resources.",
+      "exampleJa": "その地域には豊富な天然資源がある。"
+    },
+    {
+      "word": "consequence",
+      "pronunciation": "/ˈkɒnsɪkwəns/",
+      "partOfSpeech": "noun",
+      "definition": "a result or effect of an action or condition",
+      "definitionJa": "結果、影響",
+      "example": "The consequences of the decision were far-reaching.",
+      "exampleJa": "その決定の結果は広範囲に及んだ。"
+    },
+    {
+      "word": "diligent",
+      "pronunciation": "/ˈdɪlɪdʒənt/",
+      "partOfSpeech": "adjective",
+      "definition": "having or showing care and conscientiousness in one's work",
+      "definitionJa": "勤勉な、熱心な",
+      "example": "She is a diligent student who always completes her assignments on time.",
+      "exampleJa": "彼女は常に期限内に課題を終わらせる勤勉な学生だ。"
+    },
+    {
+      "word": "essential",
+      "pronunciation": "/ɪˈsenʃəl/",
+      "partOfSpeech": "adjective",
+      "definition": "absolutely necessary; extremely important",
+      "definitionJa": "必要不可欠な、極めて重要な",
+      "example": "Water is essential for life.",
+      "exampleJa": "水は生命に不可欠だ。"
+    },
+    {
+      "word": "fluctuate",
+      "pronunciation": "/ˈflʌktʃueɪt/",
+      "partOfSpeech": "verb",
+      "definition": "to rise and fall irregularly in number or amount",
+      "definitionJa": "変動する、上下する",
+      "example": "Stock prices fluctuate daily.",
+      "exampleJa": "株価は毎日変動する。"
+    }
+  ]
+}
