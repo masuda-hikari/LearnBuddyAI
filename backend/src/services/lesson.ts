@@ -82,7 +82,7 @@ export class LessonService {
   /**
    * 語彙レッスンの単語リストを取得
    */
-  async getVocabularyWords(lessonId: string): Promise<VocabularyWord[]> {
+  async getVocabularyWords(_lessonId: string): Promise<VocabularyWord[]> {
     try {
       const filePath = path.join(this.contentDir, 'vocabulary', 'basic_english.json');
       const content = fs.readFileSync(filePath, 'utf-8');

@@ -27,9 +27,7 @@ export class AIService {
 必要に応じて例を挙げて説明してください。
 回答は日本語で行ってください。`;
 
-    const userPrompt = context
-      ? `コンテキスト: ${context}\n\n質問: ${question}`
-      : question;
+    const userPrompt = context ? `コンテキスト: ${context}\n\n質問: ${question}` : question;
 
     try {
       const response = await this.client.chat.completions.create({

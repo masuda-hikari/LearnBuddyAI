@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import { askRouter } from './routes/ask';
 import { lessonRouter } from './routes/lesson';
 import { userRouter } from './routes/user';
+import { quizRouter } from './routes/quiz';
 
 // 環境変数読み込み
 dotenv.config();
@@ -28,6 +29,7 @@ app.get('/health', (_req: Request, res: Response) => {
 app.use('/api/ask', askRouter);
 app.use('/api/lessons', lessonRouter);
 app.use('/api/users', userRouter);
+app.use('/api/quiz', quizRouter);
 
 // 404ハンドラー
 app.use((_req: Request, res: Response) => {
