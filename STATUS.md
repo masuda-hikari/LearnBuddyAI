@@ -1,4 +1,4 @@
-# LearnBuddyAI - ステータス
+﻿# LearnBuddyAI - ステータス
 
 最終更新: 2026-01-09
 
