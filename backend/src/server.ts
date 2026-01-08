@@ -8,6 +8,8 @@ import { quizRouter } from './routes/quiz';
 import { reviewRouter } from './routes/review';
 import { reminderRouter } from './routes/reminder';
 import { analyticsRouter } from './routes/analytics';
+import { authRouter } from './routes/auth';
+import { planRouter } from './routes/plan';
 
 // 環境変数読み込み
 dotenv.config();
@@ -29,6 +31,8 @@ app.get('/health', (_req: Request, res: Response) => {
 });
 
 // APIルート
+app.use('/api/auth', authRouter);
+app.use('/api/plans', planRouter);
 app.use('/api/ask', askRouter);
 app.use('/api/lessons', lessonRouter);
 app.use('/api/users', userRouter);
