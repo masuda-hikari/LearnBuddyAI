@@ -1,4 +1,4 @@
-﻿# LearnBuddyAI
+# LearnBuddyAI
 
 **あなた専用のAI家庭教師 - いつでも、どこでも、あなたのペースで学習**
 
@@ -38,18 +38,34 @@ npm run dev
 | **Education** | 要問合せ | 学校・塾向け一括ライセンス |
 
 ## 開発状況
-現在Phase 1（基盤構築）を進行中です。
+現在Phase 2（学習機能）を進行中です。
+
+### Phase 1: 基盤構築 ✅完了
 - [x] プロジェクト構造セットアップ
-- [ ] 基本APIサーバー実装
-- [ ] LLM統合
-- [ ] ユーザー管理
+- [x] 基本APIサーバー実装
+- [x] LLM統合
+- [x] ユーザー管理
+
+### Phase 2: 学習機能 🔄進行中
+- [x] レッスンフロー実装
+- [x] クイズシステム
+- [x] 進捗保存（SQLite）
+- [x] スペースドリピティション基礎
+
+### Phase 3: パーソナライゼーション ⏳未着手
+- [ ] 学習履歴分析
+- [ ] 弱点検出・強化学習
+
+### Phase 4: 収益化 ⏳未着手
+- [ ] ユーザー認証（JWT）
+- [ ] 料金プラン実装
 
 ## 技術スタック
 
 - **Backend**: Node.js, TypeScript, Express
-- **Database**: SQLite（初期）→ PostgreSQL（本番）
+- **Database**: SQLite（better-sqlite3）
 - **AI**: OpenAI GPT-4 / Anthropic Claude
-- **Testing**: Jest
+- **Testing**: Jest (30テスト)
 
 ## ライセンス
 

@@ -5,6 +5,9 @@ import { askRouter } from './routes/ask';
 import { lessonRouter } from './routes/lesson';
 import { userRouter } from './routes/user';
 import { quizRouter } from './routes/quiz';
+import { reviewRouter } from './routes/review';
+import { reminderRouter } from './routes/reminder';
+import { analyticsRouter } from './routes/analytics';
 
 // 環境変数読み込み
 dotenv.config();
@@ -30,6 +33,9 @@ app.use('/api/ask', askRouter);
 app.use('/api/lessons', lessonRouter);
 app.use('/api/users', userRouter);
 app.use('/api/quiz', quizRouter);
+app.use('/api/review', reviewRouter);
+app.use('/api/reminders', reminderRouter);
+app.use('/api/analytics', analyticsRouter);
 
 // 404ハンドラー
 app.use((_req: Request, res: Response) => {

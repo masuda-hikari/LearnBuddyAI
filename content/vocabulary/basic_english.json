@@ -1,51 +1,96 @@
-﻿{
-  "title": "蝓ｺ遉手恭蜊倩ｪ・,
+{
+  "title": "基礎英単語",
   "level": "beginner",
   "words": [
     {
       "word": "abundant",
-      "pronunciation": "/ﾉ厖・ﾊ系dﾉ冢t/",
+      "pronunciation": "/əˈbʌndənt/",
       "partOfSpeech": "adjective",
       "definition": "existing or available in large quantities; plentiful",
-      "definitionJa": "雎雁ｯ後↑縲√◆縺上＆繧薙≠繧・,
+      "definitionJa": "豊富な、たくさんある",
       "example": "The region has abundant natural resources.",
-      "exampleJa": "縺昴・蝨ｰ蝓溘↓縺ｯ雎雁ｯ後↑螟ｩ辟ｶ雉・ｺ舌′縺ゅｋ縲・
+      "exampleJa": "その地域には豊富な天然資源がある。"
     },
     {
       "word": "consequence",
-      "pronunciation": "/ﾋ・ﾉ地sﾉｪkwﾉ冢s/",
+      "pronunciation": "/ˈkɒnsɪkwəns/",
       "partOfSpeech": "noun",
       "definition": "a result or effect of an action or condition",
-      "definitionJa": "邨先棡縲∝ｽｱ髻ｿ",
+      "definitionJa": "結果、影響",
       "example": "The consequences of the decision were far-reaching.",
-      "exampleJa": "縺昴・豎ｺ螳壹・邨先棡縺ｯ蠎・ｯ・峇縺ｫ蜿翫ｓ縺縲・
+      "exampleJa": "その決定の結果は広範囲に及んだ。"
     },
     {
       "word": "diligent",
-      "pronunciation": "/ﾋ・ﾉｪlﾉｪdﾊ痛冢t/",
+      "pronunciation": "/ˈdɪlɪdʒənt/",
       "partOfSpeech": "adjective",
       "definition": "having or showing care and conscientiousness in one's work",
-      "definitionJa": "蜍､蜍峨↑縲∫・蠢・↑",
+      "definitionJa": "勤勉な、真面目な",
       "example": "She is a diligent student who always completes her assignments on time.",
-      "exampleJa": "蠖ｼ螂ｳ縺ｯ蟶ｸ縺ｫ譛滄剞蜀・↓隱ｲ鬘後ｒ邨ゅｏ繧峨○繧句共蜍峨↑蟄ｦ逕溘□縲・
+      "exampleJa": "彼女は常に期限内に課題を終わらせる勤勉な学生だ。"
     },
     {
       "word": "essential",
-      "pronunciation": "/ﾉｪﾋ・enﾊλ冤/",
+      "pronunciation": "/ɪˈsenʃəl/",
       "partOfSpeech": "adjective",
       "definition": "absolutely necessary; extremely important",
-      "definitionJa": "蠢・ｦ∽ｸ榊庄谺縺ｪ縲∵･ｵ繧√※驥崎ｦ√↑",
+      "definitionJa": "必要不可欠な、極めて重要な",
       "example": "Water is essential for life.",
-      "exampleJa": "豌ｴ縺ｯ逕溷多縺ｫ荳榊庄谺縺縲・
+      "exampleJa": "水は生命に不可欠だ。"
     },
     {
       "word": "fluctuate",
-      "pronunciation": "/ﾋ・lﾊ渓tﾊブeﾉｪt/",
+      "pronunciation": "/ˈflʌktʃueɪt/",
       "partOfSpeech": "verb",
       "definition": "to rise and fall irregularly in number or amount",
-      "definitionJa": "螟牙虚縺吶ｋ縲∽ｸ贋ｸ九☆繧・,
+      "definitionJa": "変動する、上下する",
       "example": "Stock prices fluctuate daily.",
-      "exampleJa": "譬ｪ萓｡縺ｯ豈取律螟牙虚縺吶ｋ縲・
+      "exampleJa": "株価は毎日変動する。"
+    },
+    {
+      "word": "accomplish",
+      "pronunciation": "/əˈkʌmplɪʃ/",
+      "partOfSpeech": "verb",
+      "definition": "to achieve or complete successfully",
+      "definitionJa": "達成する、成し遂げる",
+      "example": "She accomplished all her goals for the year.",
+      "exampleJa": "彼女は年間の目標をすべて達成した。"
+    },
+    {
+      "word": "benefit",
+      "pronunciation": "/ˈbenɪfɪt/",
+      "partOfSpeech": "noun",
+      "definition": "an advantage or profit gained from something",
+      "definitionJa": "利益、恩恵",
+      "example": "Regular exercise has many health benefits.",
+      "exampleJa": "定期的な運動には多くの健康上の利点がある。"
+    },
+    {
+      "word": "challenge",
+      "pronunciation": "/ˈtʃælɪndʒ/",
+      "partOfSpeech": "noun",
+      "definition": "a task or situation that tests someone's abilities",
+      "definitionJa": "挑戦、課題",
+      "example": "Learning a new language is a challenge.",
+      "exampleJa": "新しい言語を学ぶことは挑戦だ。"
+    },
+    {
+      "word": "demonstrate",
+      "pronunciation": "/ˈdemənstreɪt/",
+      "partOfSpeech": "verb",
+      "definition": "to show or prove something clearly",
+      "definitionJa": "示す、実演する",
+      "example": "The experiment demonstrated the theory.",
+      "exampleJa": "その実験は理論を証明した。"
+    },
+    {
+      "word": "efficient",
+      "pronunciation": "/ɪˈfɪʃənt/",
+      "partOfSpeech": "adjective",
+      "definition": "achieving maximum productivity with minimum wasted effort",
+      "definitionJa": "効率的な、能率の良い",
+      "example": "This is a more efficient way to solve the problem.",
+      "exampleJa": "これは問題を解決するより効率的な方法だ。"
     }
   ]
 }

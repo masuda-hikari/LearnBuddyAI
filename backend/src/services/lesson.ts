@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import { DatabaseService, DbLessonCompletion } from './database';
 
 interface VocabularyWord {
   word: string;
@@ -23,10 +24,10 @@ interface Lesson {
   description: string;
   type: 'vocabulary' | 'grammar' | 'reading';
   level: string;
-  estimatedTime: number; // 分
+  estimatedTime: number;
 }
 
-interface LessonCompletion {
+export interface LessonCompletion {
   lessonId: string;
   userId: string;
   score?: number;
@@ -35,10 +36,11 @@ interface LessonCompletion {
 
 /**
  * レッスンサービス - 学習コンテンツの管理
+ * 収益化観点：レッスン完了追跡は有料機能（進捗分析・カリキュラム生成）の基盤
  */
 export class LessonService {
   private contentDir: string;
-  private completions: LessonCompletion[] = [];
+  private db = DatabaseService.getInstance().getDb();
 
   constructor() {
     this.contentDir = path.join(__dirname, '../../../content');
@@ -48,7 +50,6 @@ export class LessonService {
    * 利用可能なレッスン一覧を取得
    */
   async getAllLessons(): Promise<Lesson[]> {
-    // 現在は語彙レッスンのみ
     const lessons: Lesson[] = [
       {
         id: 'vocab-basic-english',
@@ -86,7 +87,9 @@ export class LessonService {
     try {
       const filePath = path.join(this.contentDir, 'vocabulary', 'basic_english.json');
       const content = fs.readFileSync(filePath, 'utf-8');
-      const data: VocabularyLesson = JSON.parse(content);
+      // BOM除去
+      const cleanContent = content.replace(/^\uFEFF/, '');
+      const data: VocabularyLesson = JSON.parse(cleanContent);
       return data.words;
     } catch (error) {
       console.error('Failed to load vocabulary:', error);
@@ -115,21 +118,82 @@ export class LessonService {
    * レッスン完了を記録
    */
   async markComplete(userId: string, lessonId: string, score?: number): Promise<void> {
-    const completion: LessonCompletion = {
-      lessonId,
-      userId,
-      score,
-      completedAt: new Date().toISOString(),
-    };
+    const now = new Date().toISOString();
 
-    this.completions.push(completion);
-    // TODO: データベースに永続化
+    this.db
+      .prepare(
+        `
+      INSERT INTO lesson_completions (user_id, lesson_id, score, completed_at)
+      VALUES (?, ?, ?, ?)
+    `
+      )
+      .run(userId, lessonId, score ?? null, now);
+
+    // ユーザー進捗の更新
+    this.db
+      .prepare(
+        `
+      UPDATE user_progress
+      SET total_lessons_completed = total_lessons_completed + 1,
+          last_active_date = ?
+      WHERE user_id = ?
+    `
+      )
+      .run(now, userId);
   }
 
   /**
    * ユーザーの完了済みレッスンを取得
    */
   async getCompletedLessons(userId: string): Promise<LessonCompletion[]> {
-    return this.completions.filter((c) => c.userId === userId);
+    const rows = this.db
+      .prepare(
+        `
+      SELECT user_id, lesson_id, score, completed_at
+      FROM lesson_completions
+      WHERE user_id = ?
+      ORDER BY completed_at DESC
+    `
+      )
+      .all(userId) as DbLessonCompletion[];
+
+    return rows.map((row) => ({
+      lessonId: row.lesson_id,
+      userId: row.user_id,
+      score: row.score ?? undefined,
+      completedAt: row.completed_at,
+    }));
+  }
+
+  /**
+   * 特定レッスンの完了回数を取得
+   */
+  async getLessonCompletionCount(userId: string, lessonId: string): Promise<number> {
+    const result = this.db
+      .prepare(
+        `
+      SELECT COUNT(*) as count FROM lesson_completions
+      WHERE user_id = ? AND lesson_id = ?
+    `
+      )
+      .get(userId, lessonId) as { count: number };
+
+    return result.count;
+  }
+
+  /**
+   * ユーザーの最高スコアを取得
+   */
+  async getBestScore(userId: string, lessonId: string): Promise<number | null> {
+    const result = this.db
+      .prepare(
+        `
+      SELECT MAX(score) as best_score FROM lesson_completions
+      WHERE user_id = ? AND lesson_id = ? AND score IS NOT NULL
+    `
+      )
+      .get(userId, lessonId) as { best_score: number | null };
+
+    return result.best_score;
   }
 }

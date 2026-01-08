@@ -1,10 +1,13 @@
 import { LessonService } from '../backend/src/services/lesson';
+import { UserService } from '../backend/src/services/user';
 
 describe('LessonService', () => {
   let lessonService: LessonService;
+  let userService: UserService;
 
   beforeEach(() => {
     lessonService = new LessonService();
+    userService = new UserService();
   });
 
   describe('getAllLessons', () => {
@@ -59,12 +62,36 @@ describe('LessonService', () => {
 
   describe('markComplete', () => {
     it('レッスン完了を記録できる', async () => {
-      await lessonService.markComplete('user-123', 'vocab-basic-english', 85);
+      // まずユーザーを作成
+      const user = await userService.register('testuser', 'test@example.com', 'password');
 
-      const completed = await lessonService.getCompletedLessons('user-123');
+      await lessonService.markComplete(user.id, 'vocab-basic-english', 85);
+
+      const completed = await lessonService.getCompletedLessons(user.id);
       expect(completed.length).toBe(1);
       expect(completed[0].lessonId).toBe('vocab-basic-english');
       expect(completed[0].score).toBe(85);
+    });
+
+    it('同じレッスンを複数回完了できる', async () => {
+      const user = await userService.register('multiuser', 'multi@example.com', 'password');
+
+      await lessonService.markComplete(user.id, 'vocab-basic-english', 70);
+      await lessonService.markComplete(user.id, 'vocab-basic-english', 90);
+
+      const completed = await lessonService.getCompletedLessons(user.id);
+      expect(completed.length).toBe(2);
+    });
+
+    it('最高スコアを取得できる', async () => {
+      const user = await userService.register('scoreuser', 'score@example.com', 'password');
+
+      await lessonService.markComplete(user.id, 'vocab-basic-english', 70);
+      await lessonService.markComplete(user.id, 'vocab-basic-english', 90);
+      await lessonService.markComplete(user.id, 'vocab-basic-english', 80);
+
+      const bestScore = await lessonService.getBestScore(user.id, 'vocab-basic-english');
+      expect(bestScore).toBe(90);
     });
   });
 });
