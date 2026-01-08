@@ -1,5 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
 import { DatabaseService, DbUser } from './database';
+import { StripeService } from './stripe';
 
 /**
  * プラン種別
@@ -136,9 +137,21 @@ export const PLANS: Record<PlanType, PlanDetails> = {
  */
 export class PlanService {
   private db = DatabaseService.getInstance().getDb();
+  private stripeService: StripeService | null = null;
 
   constructor() {
     this.initializeSubscriptionTable();
+    // Stripeサービスは遅延初期化（循環参照回避）
+  }
+
+  /**
+   * Stripeサービス取得（遅延初期化）
+   */
+  private getStripeService(): StripeService {
+    if (!this.stripeService) {
+      this.stripeService = new StripeService();
+    }
+    return this.stripeService;
   }
 
   /**
@@ -450,5 +463,78 @@ export class PlanService {
         remaining: limit === -1 ? Infinity : Math.max(0, limit - used),
       },
     };
+  }
+
+  /**
+   * Stripe決済連携：Checkout Session作成
+   */
+  async createCheckoutSession(
+    userId: string,
+    email: string,
+    plan: PlanType,
+    billingCycle: 'monthly' | 'yearly',
+    successUrl: string,
+    cancelUrl: string
+  ): Promise<{ sessionId: string; url: string }> {
+    const stripe = this.getStripeService();
+    if (!stripe.isEnabled()) {
+      throw new Error('Stripe is not configured');
+    }
+
+    return stripe.createCheckoutSession({
+      userId,
+      email,
+      plan,
+      billingCycle,
+      successUrl,
+      cancelUrl,
+    });
+  }
+
+  /**
+   * Stripe決済連携：Billing Portal Session作成
+   */
+  async createBillingPortalSession(userId: string, returnUrl: string): Promise<{ url: string }> {
+    const stripe = this.getStripeService();
+    if (!stripe.isEnabled()) {
+      throw new Error('Stripe is not configured');
+    }
+
+    return stripe.createBillingPortalSession(userId, returnUrl);
+  }
+
+  /**
+   * Stripe連携：サブスクリプションキャンセル（Stripe経由）
+   */
+  async cancelSubscriptionViaStripe(userId: string): Promise<void> {
+    const stripe = this.getStripeService();
+    if (!stripe.isEnabled()) {
+      // Stripeなしの場合はローカルキャンセルのみ
+      await this.scheduleCancellation(userId);
+      return;
+    }
+
+    await stripe.cancelSubscription(userId);
+  }
+
+  /**
+   * Stripe連携：キャンセル予約取り消し
+   */
+  async reactivateSubscriptionViaStripe(userId: string): Promise<void> {
+    const stripe = this.getStripeService();
+    if (!stripe.isEnabled()) {
+      // Stripeなしの場合はローカル処理のみ
+      await this.cancelCancellation(userId);
+      return;
+    }
+
+    await stripe.reactivateSubscription(userId);
+  }
+
+  /**
+   * Stripe利用可否チェック
+   */
+  isStripeEnabled(): boolean {
+    return this.getStripeService().isEnabled();
   }
 }

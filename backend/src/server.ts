@@ -10,6 +10,7 @@ import { reminderRouter } from './routes/reminder';
 import { analyticsRouter } from './routes/analytics';
 import { authRouter } from './routes/auth';
 import { planRouter } from './routes/plan';
+import stripeRouter from './routes/stripe';
 
 // 環境変数読み込み
 dotenv.config();
@@ -19,6 +20,10 @@ const PORT = process.env.PORT || 3000;
 
 // ミドルウェア
 app.use(cors());
+
+// Stripe Webhookはraw bodyが必要なため、先に登録
+// 他のルートはJSON parseされたbodyを使う
+app.use('/api/stripe/webhook', express.raw({ type: 'application/json' }));
 app.use(express.json());
 
 // ヘルスチェック
@@ -33,6 +38,7 @@ app.get('/health', (_req: Request, res: Response) => {
 // APIルート
 app.use('/api/auth', authRouter);
 app.use('/api/plans', planRouter);
+app.use('/api/stripe', stripeRouter);
 app.use('/api/ask', askRouter);
 app.use('/api/lessons', lessonRouter);
 app.use('/api/users', userRouter);
