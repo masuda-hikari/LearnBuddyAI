@@ -18,8 +18,17 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// CORS設定
+const corsOrigin = process.env.CORS_ORIGIN || '*';
+const corsOptions: cors.CorsOptions = {
+  origin: corsOrigin === '*' ? '*' : corsOrigin.split(',').map((s) => s.trim()),
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+};
+
 // ミドルウェア
-app.use(cors());
+app.use(cors(corsOptions));
 
 // Stripe Webhookはraw bodyが必要なため、先に登録
 // 他のルートはJSON parseされたbodyを使う

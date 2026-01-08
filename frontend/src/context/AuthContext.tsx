@@ -8,9 +8,8 @@ import type { AuthResponse } from '../api/auth';
 interface User {
   id: string;
   email: string;
-  name: string;
+  username: string;
   plan: string;
-  createdAt: string;
 }
 
 interface AuthContextType {
@@ -18,13 +17,14 @@ interface AuthContextType {
   isLoading: boolean;
   isAuthenticated: boolean;
   login: (email: string, password: string) => Promise<void>;
-  register: (email: string, password: string, name?: string) => Promise<void>;
+  register: (email: string, password: string, username?: string) => Promise<void>;
   logout: () => Promise<void>;
   updateUser: (user: User) => void;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useAuth = () => {
   const context = useContext(AuthContext);
   if (context === undefined) {
@@ -68,19 +68,19 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const login = async (email: string, password: string) => {
     const response: AuthResponse = await authApi.login({ email, password });
 
-    localStorage.setItem('accessToken', response.accessToken);
-    localStorage.setItem('refreshToken', response.refreshToken);
+    localStorage.setItem('accessToken', response.tokens.accessToken);
+    localStorage.setItem('refreshToken', response.tokens.refreshToken);
     localStorage.setItem('user', JSON.stringify(response.user));
 
     setUser(response.user);
   };
 
   // ユーザー登録
-  const register = async (email: string, password: string, name?: string) => {
-    const response: AuthResponse = await authApi.register({ email, password, name });
+  const register = async (email: string, password: string, username?: string) => {
+    const response: AuthResponse = await authApi.register({ email, password, username });
 
-    localStorage.setItem('accessToken', response.accessToken);
-    localStorage.setItem('refreshToken', response.refreshToken);
+    localStorage.setItem('accessToken', response.tokens.accessToken);
+    localStorage.setItem('refreshToken', response.tokens.refreshToken);
     localStorage.setItem('user', JSON.stringify(response.user));
 
     setUser(response.user);

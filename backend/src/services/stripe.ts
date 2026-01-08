@@ -77,8 +77,19 @@ export class StripeService {
 
   /**
    * subscriptionsテーブルにStripe関連カラムを追加
+   * 注意：PlanServiceがテーブル作成するため、テーブル存在確認を行う
    */
   private initializeStripeColumns(): void {
+    // テーブルが存在するか確認
+    const tableExists = this.db
+      .prepare("SELECT name FROM sqlite_master WHERE type='table' AND name='subscriptions'")
+      .get();
+
+    if (!tableExists) {
+      // テーブルが存在しない場合は後で作成される（PlanServiceが担当）
+      return;
+    }
+
     // カラムが存在しない場合のみ追加
     try {
       this.db.exec(`

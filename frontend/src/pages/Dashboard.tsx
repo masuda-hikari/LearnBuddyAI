@@ -39,7 +39,7 @@ const Dashboard: React.FC = () => {
   return (
     <div className="dashboard-page">
       <div className="dashboard-header">
-        <h1>ようこそ、{user?.name || 'ゲスト'}さん！</h1>
+        <h1>ようこそ、{user?.username || 'ゲスト'}さん！</h1>
         <p className="plan-info">
           現在のプラン: <span className={`plan-badge plan-${user?.plan}`}>{user?.plan}</span>
           {user?.plan === 'free' && (

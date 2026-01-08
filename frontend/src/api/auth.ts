@@ -10,18 +10,21 @@ export interface LoginRequest {
 export interface RegisterRequest {
   email: string;
   password: string;
-  name?: string;
+  username?: string;
 }
 
 export interface AuthResponse {
-  accessToken: string;
-  refreshToken: string;
+  success: boolean;
+  tokens: {
+    accessToken: string;
+    refreshToken: string;
+    expiresIn: number;
+  };
   user: {
     id: string;
     email: string;
-    name: string;
+    username: string;
     plan: string;
-    createdAt: string;
   };
 }
 

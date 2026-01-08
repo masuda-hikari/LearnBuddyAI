@@ -78,7 +78,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           {isAuthenticated && user && (
             <div className="user-menu">
               <span className="user-info">
-                <span className="user-name">{user.name || user.email}</span>
+                <span className="user-name">{user.username || user.email}</span>
                 <span className={`plan-badge plan-${user.plan}`}>{user.plan}</span>
               </span>
               <button onClick={handleLogout} className="logout-btn">

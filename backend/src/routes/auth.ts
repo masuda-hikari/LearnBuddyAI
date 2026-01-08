@@ -6,7 +6,7 @@ import { authenticate, AuthenticatedRequest } from '../middleware/auth';
 const router = Router();
 
 interface RegisterRequest {
-  username: string;
+  username?: string;
   email: string;
   password: string;
 }
@@ -28,8 +28,8 @@ router.post('/register', async (req: Request<object, object, RegisterRequest>, r
   try {
     const { username, email, password } = req.body;
 
-    if (!username || !email || !password) {
-      res.status(400).json({ error: '全ての項目を入力してください' });
+    if (!email || !password) {
+      res.status(400).json({ error: 'メールアドレスとパスワードを入力してください' });
       return;
     }
 
@@ -39,10 +39,13 @@ router.post('/register', async (req: Request<object, object, RegisterRequest>, r
       return;
     }
 
+    // usernameが未指定の場合、メールアドレスのローカルパートを使用
+    const finalUsername = username || email.split('@')[0];
+
     const authService = new AuthService();
     const planService = new PlanService();
 
-    const { userId, tokens } = await authService.registerUser(username, email, password);
+    const { userId, tokens } = await authService.registerUser(finalUsername, email, password);
 
     // サブスクリプション作成
     await planService.createSubscription(userId, 'free');
@@ -51,7 +54,7 @@ router.post('/register', async (req: Request<object, object, RegisterRequest>, r
       success: true,
       user: {
         id: userId,
-        username,
+        username: finalUsername,
         email,
         plan: 'free',
       },
