@@ -20,7 +20,12 @@
 - 学習セッション管理
 - 学習分析サービス（弱点検出、適応型カリキュラム）
 - JWT認証システム（アクセス/リフレッシュトークン）
-- 料金プランシステム（Free/Premium/Education）
+- 料金プランシステム（Free/Basic/Premium/Pro/Education）
+  - Free: 無料（1日5質問）
+  - Basic: ¥980/月（1日20質問）
+  - Premium: ¥2,980/月（1日50質問）
+  - Pro: ¥9,800/月（無制限）
+  - Education: 要問合せ
 - 認証ミドルウェア（プラン別アクセス制御）
 - Stripe決済連携（Checkout/Webhook/Portal）
 - CORS環境変数設定
