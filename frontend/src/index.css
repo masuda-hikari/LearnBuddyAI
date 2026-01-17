@@ -1,5 +1,5 @@
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: system-ui, -apple-system, 'Segoe UI', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', Meiryo, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -11,6 +11,10 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  /* タッチデバイス対応 */
+  -webkit-tap-highlight-color: rgba(79, 70, 229, 0.3);
+  touch-action: manipulation;
 }
 
 a {
@@ -28,6 +32,10 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+
+  /* モバイル対応 */
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: none;
 }
 
 h1 {
@@ -45,6 +53,11 @@ button {
   background-color: #1a1a1a;
   cursor: pointer;
   transition: border-color 0.25s;
+
+  /* タッチデバイス対応 */
+  min-height: 44px; /* Apple推奨のタッチターゲットサイズ */
+  touch-action: manipulation;
+  user-select: none;
 }
 button:hover {
   border-color: #646cff;
@@ -52,6 +65,11 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+/* タッチデバイスでのアクティブ状態 */
+button:active {
+  transform: scale(0.98);
+  transition: transform 0.1s;
 }
 
 @media (prefers-color-scheme: light) {
@@ -64,5 +82,68 @@ button:focus-visible {
   }
   button {
     background-color: #f9f9f9;
+  }
+}
+
+/* レスポンシブデザイン - タブレット */
+@media (max-width: 1024px) {
+  h1 {
+    font-size: 2.5em;
+  }
+
+  button {
+    padding: 0.8em 1.4em;
+    font-size: 1.05em;
+  }
+}
+
+/* レスポンシブデザイン - モバイル */
+@media (max-width: 768px) {
+  :root {
+    font-size: 16px; /* モバイルでの基準フォントサイズ */
+  }
+
+  h1 {
+    font-size: 2em;
+    line-height: 1.2;
+  }
+
+  button {
+    padding: 0.9em 1.5em;
+    font-size: 1.1em;
+    min-height: 48px; /* モバイルでのタッチターゲットサイズ */
+  }
+
+  body {
+    padding: 0;
+    min-width: 100%;
+  }
+}
+
+/* レスポンシブデザイン - 小型モバイル */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.8em;
+  }
+
+  button {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+/* アクセシビリティ - 動作軽減設定 */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* 高解像度ディスプレイ対応 */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  body {
+    -webkit-font-smoothing: subpixel-antialiased;
   }
 }

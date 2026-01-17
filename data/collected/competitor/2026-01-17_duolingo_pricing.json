@@ -1,0 +1,73 @@
+{
+  "collection_date": "2026-01-17",
+  "category": "competitor_analysis",
+  "topic": "Duolingo Pricing Model 2026",
+  "sources": [
+    {
+      "title": "Duolingo Pricing Guide 2025: Free vs Super vs Max Plans",
+      "url": "https://aiexamhelper.com/blogs/do-you-have-to-pay-for-duolingo/",
+      "accessed": "2026-01-17"
+    },
+    {
+      "title": "How Much Is Super Duolingo in January 2026? Family Plan Cost & More",
+      "url": "https://www.dealnews.com/features/duolingo/cost/",
+      "accessed": "2026-01-17"
+    },
+    {
+      "title": "Duolingo launches new subscription tier with access to AI tutor powered by GPT-4",
+      "url": "https://techcrunch.com/2023/03/14/duolingo-launches-new-subscription-tier-with-access-to-ai-tutor-powered-by-gpt-4/",
+      "accessed": "2026-01-17"
+    }
+  ],
+  "competitor": "Duolingo",
+  "pricing_model": {
+    "free": {
+      "price": "無料",
+      "features": [
+        "43言語の全基本コース",
+        "コミュニティ機能",
+        "広告あり",
+        "ハート制限あり"
+      ]
+    },
+    "super": {
+      "monthly": "$12.99 (約¥1,900)",
+      "annual": "$83.99 (約¥12,300)",
+      "family_annual": "$119.99 (最大6ユーザー、約¥17,600)",
+      "features": [
+        "オフラインアクセス",
+        "無制限ハート",
+        "広告なし"
+      ]
+    },
+    "max": {
+      "monthly": "$29.99 (約¥4,400)",
+      "annual": "$167.99 (約¥24,600)",
+      "features": [
+        "AI搭載機能（GPT-4ベース）",
+        "ロールプレイ機能",
+        "解答解説機能（Explain My Answer）",
+        "Super機能全て含む"
+      ]
+    }
+  },
+  "analysis": {
+    "strengths": [
+      "フリーミアムモデルで大規模ユーザー獲得",
+      "AI機能を最上位プランに配置（高単価）",
+      "ファミリープランで顧客単価向上",
+      "年間プランで約35%割引→長期契約誘導"
+    ],
+    "weaknesses": [
+      "Max ($29.99/月) は高価格 → 競合機会",
+      "Free版の制限（ハート・広告）がユーザー体験を損なう可能性"
+    ],
+    "implications_for_learnbuddyai": [
+      "現在の価格設定（¥980/月 Basic, ¥2,980/月 Premium）はDuolingo Superより安い → 価格競争力あり",
+      "AI機能は差別化要因として有効（Duolingo MaxはGPT-4で$29.99）",
+      "ファミリープランの追加を検討すべき",
+      "Free版の質問制限（1日5質問）は適切（Duolingoもハート制限）",
+      "年間プラン割引の導入を検討（リテンション向上）"
+    ]
+  }
+}

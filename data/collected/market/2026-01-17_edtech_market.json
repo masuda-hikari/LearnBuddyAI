@@ -1,0 +1,54 @@
+{
+  "collection_date": "2026-01-17",
+  "category": "market_data",
+  "topic": "EdTech Market & AI in Education",
+  "sources": [
+    {
+      "title": "AI In Education Market Size & Share | Industry Report, 2030",
+      "url": "https://www.grandviewresearch.com/industry-analysis/artificial-intelligence-ai-education-market-report",
+      "accessed": "2026-01-17"
+    },
+    {
+      "title": "AI in Education Market Size to Surge USD 112.30 Bn by 2034",
+      "url": "https://www.precedenceresearch.com/ai-in-education-market",
+      "accessed": "2026-01-17"
+    },
+    {
+      "title": "49 predictions about edtech, innovation, and--yes--AI in 2026",
+      "url": "https://www.eschoolnews.com/innovative-teaching/2026/01/01/draft-2026-predictions/",
+      "accessed": "2026-01-17"
+    },
+    {
+      "title": "EdTech Trends 2025–2030: The 2026 Tipping Point for AI & LXP",
+      "url": "https://emerline.com/blog/edtech-trends",
+      "accessed": "2026-01-17"
+    }
+  ],
+  "key_findings": {
+    "market_size": {
+      "global_edtech_2025": "USD 404 billion+",
+      "ai_in_education_2025": "USD 7.05 billion",
+      "ai_in_education_2026": "USD 9.58 billion (projected)",
+      "ai_in_education_2026_range": "USD 10-23 billion (various sources)",
+      "data_freshness": "2026-01-17時点（最新）"
+    },
+    "growth_rate": {
+      "cagr_2025_2030": "31.2%",
+      "asia_pacific_cagr": "44.20%"
+    },
+    "trends": [
+      "2026年はAIツールが実験段階から必須機能へ移行する転換点",
+      "パーソナライズ学習の需要増加: 適応型学習、予測分析、リアルタイム調整",
+      "24/7 AIチューターが標準化",
+      "クラウド/SaaS展開が2026年に全EdTech支出の60%以上を占める",
+      "アジア太平洋地域が成長をリード（政府のAIカリキュラム統合）"
+    ],
+    "implications_for_learnbuddyai": [
+      "AIチューター市場は急成長中（CAGR 31.2%）→ 早期参入のチャンス",
+      "2026年が転換点 → 今すぐデプロイして先行者利益を獲得すべき",
+      "パーソナライズ・適応型学習が差別化要因 → 既存実装を強化",
+      "24/7対応は競合優位性 → マーケティングで強調",
+      "クラウド/SaaS前提の設計は正しい方向性"
+    ]
+  }
+}

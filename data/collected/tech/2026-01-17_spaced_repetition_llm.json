@@ -1,0 +1,69 @@
+{
+  "collection_date": "2026-01-17",
+  "category": "technology_trends",
+  "topic": "Spaced Repetition & LLM in Education",
+  "sources": [
+    {
+      "title": "LECTOR: LLM-Enhanced Concept-based Test-Oriented Repetition for Adaptive Spaced Learning",
+      "url": "https://arxiv.org/html/2508.03275v1",
+      "accessed": "2026-01-17",
+      "publication_date": "2025-08"
+    },
+    {
+      "title": "Adaptive LLM-Enhanced LMS: Personalized Learning in 2026",
+      "url": "https://leveluplms.com/the-advantages-of-using-llm-enhanced-lms-in-2026/",
+      "accessed": "2026-01-17"
+    },
+    {
+      "title": "An LLM based learning framework for adaptive feedback mechanisms in gamified XR",
+      "url": "https://www.sciencedirect.com/science/article/pii/S2949678025000248",
+      "accessed": "2026-01-17"
+    }
+  ],
+  "key_technologies": {
+    "lector_system": {
+      "full_name": "LLM-Enhanced Concept-based Test-Oriented Repetition",
+      "description": "LLMを活用した適応型スケジューリングアルゴリズム",
+      "components": [
+        "LLMベースのセマンティック分析",
+        "適応型インターバル最適化",
+        "パーソナライズド学習プロファイル"
+      ],
+      "performance": {
+        "success_rate": "90.2%",
+        "baseline_best": "88.4%",
+        "improvement": "2.0% relative improvement"
+      },
+      "advantages": [
+        "意味的に類似した概念の処理が優れている",
+        "混乱による誤答を削減",
+        "計算効率を維持"
+      ]
+    },
+    "current_tools": {
+      "anki": "伝統的なスペースド・リピティションソフトウェア",
+      "quizlet": "学生に人気のフラッシュカード・復習ツール"
+    }
+  },
+  "research_findings": {
+    "llm_adaptive_learning": {
+      "motivation_increase": "22%",
+      "task_retry_reduction": "40%以上",
+      "framework": "リアルタイムLLMフィードバック + MAML + ゲーム理論的インセンティブ + XR環境"
+    }
+  },
+  "implications_for_learnbuddyai": [
+    "現在のスペースド・リピティション実装を強化すべき",
+    "LLMセマンティック分析を活用した適応型復習スケジューリングを実装",
+    "パーソナライズド学習プロファイルの詳細化（LECTOR方式参考）",
+    "意味的類似性を考慮した問題出題（混乱削減）",
+    "リアルタイムフィードバック機能の強化",
+    "ゲーミフィケーション要素の追加検討（モチベーション22%向上実績）"
+  ],
+  "technical_implementation_ideas": [
+    "In-Context Learning (ICL) でセマンティック類似度評価",
+    "ユーザーの回答履歴から学習曲線を分析",
+    "適応型難易度調整（現在の実装を拡張）",
+    "復習タイミングの動的最適化"
+  ]
+}

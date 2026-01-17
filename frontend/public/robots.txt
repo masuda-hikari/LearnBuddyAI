@@ -1,0 +1,11 @@
+# LearnBuddyAI Robots.txt
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+
+# Sitemap
+Sitemap: https://learnbuddyai.com/sitemap.xml
+
+# Crawl-delay for courtesy
+Crawl-delay: 1
