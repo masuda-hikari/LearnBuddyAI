@@ -2,9 +2,9 @@
 
 **あなた専用のAI家庭教師 - 24時間365日、いつでも学習**
 
-[![Status](https://img.shields.io/badge/status-production--ready-green)](https://github.com)
-[![License](https://img.shields.io/badge/license-Proprietary-blue)](LICENSE)
-[![Tests](https://img.shields.io/badge/tests-103%20passing-success)](backend/src/__tests__)
+[\![Status](https://img.shields.io/badge/status-production--ready-green)](https://github.com)
+[\![License](https://img.shields.io/badge/license-Proprietary-blue)](LICENSE)
+[\![Tests](https://img.shields.io/badge/tests-103%20passing-success)](backend/src/__tests__)
 
 ## 🎯 概要
 
@@ -64,18 +64,6 @@ npm run build  # 本番ビルド
 | 🧮 数学 | 📅 計画中 |
 | 💻 プログラミング | 📅 計画中 |
 | 🔬 理科 | 📅 計画中 |
-
-## 💰 料金プラン
-
-| プラン | 価格 | 主な機能 |
-|--------|------|---------|
-| **Free** | ¥0/月 | • 1日5質問<br>• 基本レッスン<br>• 進捗トラッキング |
-| **Basic** | ¥980/月 | • 1日20質問<br>• 広告なし<br>• 基本進捗分析 |
-| **Premium** | ¥2,980/月 | • 1日50質問<br>• 全レッスン<br>• 詳細進捗分析<br>• 優先サポート |
-| **Pro** | ¥9,800/月 | • 無制限質問<br>• 全機能<br>• API連携<br>• 専用サポート |
-| **Education** | 要問合せ | 学校・塾向けライセンス、管理機能、一括購入 |
-
-**競合比較**: Duolingo Max (月額¥4,400) の約1/3の価格でフル機能を提供
 
 ## 📊 開発状況
 
